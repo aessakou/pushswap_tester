@@ -34,6 +34,9 @@ int main()
                 cmp = "Compiling";
             counter++;
         }
+        system("rm -rf errors");
+        system("rm -rf clean_output");
+        system("rm -rf compiler_output");
         if ( WEXITSTATUS(status) == 0)
         {
             std::cerr << "\033[1;32mCompilation is done.\033[0m" << std::endl;

@@ -10,8 +10,6 @@ all:
 	@echo "\033[1;32m\t\tTest is running:\033[0m"
 	@/bin/bash $(NAME)
 
-# @c++ waiting.cpp -o waiting
-# @./waiting
 M:
 	@/bin/bash $(NAME)
 
