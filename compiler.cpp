@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   compiler.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/26 11:01:06 by aessakou          #+#    #+#             */
+/*   Updated: 2023/11/26 14:46:46 by aessakou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <sys/types.h>
 #include <unistd.h>
@@ -34,18 +46,21 @@ int main()
                 cmp = "Compiling";
             counter++;
         }
-        system("rm -rf errors");
-        system("rm -rf clean_output");
-        system("rm -rf compiler_output");
         if ( WEXITSTATUS(status) == 0)
         {
             std::cerr << "\033[1;32mCompilation is done.\033[0m" << std::endl;
         }
         else
         {
-            std::cerr << "\033[1;31mERROR is the Compilation.\033[0m" << std::endl;
+            // std::cerr << "\033[1;31mERROR is the Compilation.\033[0m" << std::endl;
             system("cat errors");
+            system("rm -rf errors");
+            system("rm -rf clean_output");
+            system("rm -rf compiler_output");
             exit (1);
         }
+        system("rm -rf errors");
+        system("rm -rf clean_output");
+        system("rm -rf compiler_output");
     }
 }

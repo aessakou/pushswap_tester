@@ -1,7 +1,8 @@
-TESTER: make [ option ]
-    options:
-        all : testing mandatory part and the bonus part.
-        M   : testing the mandatory part only.
-        B   : testing the bonus part only.
-        N   : specify the number of testing [ex: make N 250] (default 100).
-        R   : specify the range of numbers [ex: make R 1-5000].
+TESTER: make [option]
+    Options:
+        A : Test both the mandatory and bonus parts.
+        M   : Test the mandatory part only.
+        B   : Test the bonus part only.
+        N   : Specify the number of tests. [e.g., make N=100] (default 50).
+        R   : Specify the quantity of numbers you want to test. [e.g., make R=500].
+        H   : Display this page. (e.g., make H)
