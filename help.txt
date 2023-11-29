@@ -1,6 +1,6 @@
 TESTER: make [option]
     Options:
-        A : Test both the mandatory and bonus parts.
+        A   : Test both the mandatory and bonus parts.
         M   : Test the mandatory part only.
         B   : Test the bonus part only.
         N   : Specify the number of tests. [e.g., make N=100] (default 50).

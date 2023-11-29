@@ -6,14 +6,15 @@
 #    By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 11:00:45 by aessakou          #+#    #+#              #
-#    Updated: 2023/11/26 15:18:45 by aessakou         ###   ########.fr        #
+#    Updated: 2023/11/26 20:09:13 by aessakou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=./tester.sh
 HELP=display_help.sh
+BONUS=test_bonus.sh
 
-.PHONY: M H
+.PHONY: A M B H
 
 .DEFAULT_GOAL := default
 
@@ -26,6 +27,9 @@ M:
 
 H:
 	@/bin/bash $(HELP)
+
+B:
+	@/bin/bash $(test_bonus)
 
 %:
 	@echo "⛔ Please Enter a valid option"

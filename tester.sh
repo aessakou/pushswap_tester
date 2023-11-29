@@ -6,7 +6,7 @@
 #    By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 11:00:40 by aessakou          #+#    #+#              #
-#    Updated: 2023/11/26 15:16:29 by aessakou         ###   ########.fr        #
+#    Updated: 2023/11/29 22:17:19 by aessakou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,10 @@ progname="push_swap"
 norm=""
 
 grade=""
+
+SYST=""
+
+checker=""
 
 min_M=99999999
 max_M=0
@@ -92,7 +96,7 @@ function test_norm {
 function test_mandatory1 {
     file="test_mandatory.txt$2"
     ./../$progname $1 > "$file"
-    res=$(< "$file" ./checker $1)
+    res=$(< "$file" ./$checker $1)
     if [ "$res" != "OK" ]
     then
         echo -n "ERROR"
@@ -135,7 +139,7 @@ function test_mandatory1 {
 function test_mandatory2 {
     file="test_mandatory.txt$2"
     ./../$progname $1 > "$file"
-    res=$(< "$file" ./checker $1)
+    res=$(< "$file" ./$checker $1)
     if [ "$res" != "OK" ]
     then
         echo -n "ERROR"
@@ -177,16 +181,13 @@ function test_mandatory2 {
 
 function while_test {
     # c++ counter.cpp -o counter
-    echo "----------------------------------------------"
+    echo "------------------------------------------------"
     limit=$2
     for ((i=1; i<=limit; i++)); do
-        if [ "$(uname -s)" == "Darwin" ]; then
-            ARG=$(jot -r $1 1 10000 | awk '!seen[$0]++' | tr "\n" " ")
-        elif [ "$(uname -s)" == "Linux" ]; then
+        if [ "$SYST" == "Linux" ]; then
             ARG=`shuf -i 1-10000 -n $1 | awk '!seen[$0]++' | tr "\n" " "`
-        else
-            echo "Unknown operating system, Pleas use macOS or Linux."
-            exit 1;
+        elif [ "$SYST" == "MACOS" ]; then
+            ARG=$(jot -r $1 1 10000 | awk '!seen[$0]++' | tr "\n" " ")
         fi
         echo -en "\033[3;34mTest $i:\033[0m"
         if [ $1 -lt 101 ]
@@ -207,7 +208,8 @@ function print_statis {
     echo -en "\033[1;35m"
     echo -en $2
     echo -en "\033[0m"
-    for ((j=1; j<=f_grade;j++)); do
+    lim=$2
+    for ((j=1; j<=lim;j++)); do
         echo -en " ⭐"
     done
     echo ""
@@ -224,6 +226,17 @@ test_norm
 
 def_num=50
 
+if [ "$(uname -s)" == "Darwin" ]; then
+    SYST="MACOS"
+    checker="checker_Mac"
+elif [ "$(uname -s)" == "Linux" ]; then
+    SYST="Linux"
+    checker="checker"
+else
+    echo "Unknown operating system, Pleas use macOS or Linux."
+    exit 1;
+fi
+
 if [ -z "$N" ]
 then
     NUMS=$def_num
@@ -237,23 +250,23 @@ then
     MV="YES"
     echo "Middle  Version  test [100]:"
     while_test "100" "$NUMS"
-    NUMS=20
+    # NUMS=20
     echo "Advanced Version test [500]:"
     while_test "500" "$NUMS"
-    echo "----------------------------------------------"
+    echo "------------------------------------------------"
     print_statis "100" $f_grade_M $max_M "$(expr $avg_M / $def_num)" $min_M
     print_statis "500" $f_grade_A $max_A "$(expr $avg_A / $NUMS)" $min_A
 elif [ $R -lt 101 ]; then
     RANG=$R
     echo "Middle  Version  test [$RANG]:"
     while_test "$RANG" "$NUMS"
-    echo "----------------------------------------------"
+    echo "------------------------------------------------"
     print_statis "$RANG" $f_grade_M $max_M "$(expr $avg_M / $NUMS)" $min_M
-elif [ $R -lt 501]; then
+elif [ $R -lt 501 ]; then
     RANG=$R
     echo "Advanced Version test [$RANG]:"
     while_test "$RANG" "$NUMS"
-    echo "----------------------------------------------"
+    echo "------------------------------------------------"
     print_statis "$RANG" $f_grade_A $max_A "$(expr $avg_A / $NUMS)" $min_A
 elif [ $R -gt 500 ]; then
     echo "the range of numbers is greater than 500"
