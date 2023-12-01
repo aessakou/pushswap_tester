@@ -6,7 +6,7 @@
 #    By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 11:00:40 by aessakou          #+#    #+#              #
-#    Updated: 2023/11/29 22:17:19 by aessakou         ###   ########.fr        #
+#    Updated: 2023/11/29 22:52:19 by aessakou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -254,7 +254,7 @@ then
     echo "Advanced Version test [500]:"
     while_test "500" "$NUMS"
     echo "------------------------------------------------"
-    print_statis "100" $f_grade_M $max_M "$(expr $avg_M / $def_num)" $min_M
+    print_statis "100" $f_grade_M $max_M "$(expr $avg_M / $NUMS)" $min_M
     print_statis "500" $f_grade_A $max_A "$(expr $avg_A / $NUMS)" $min_A
 elif [ $R -lt 101 ]; then
     RANG=$R

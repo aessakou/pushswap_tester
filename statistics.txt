@@ -1,0 +1,83 @@
+#######################
+var to_push:
+   stack->to_push = ((size - 5) / 3);
+	if (stack->to_push == 0)
+		stack->to_push = 1;
+
+statistics of R=100 N=5000
+
+Statistics of 100 numbers:
+   Max = 682
+   avg = 629
+   Min = 581
+   Final grade = 5
+
+########################
+
+   stack->to_push = ((size - 5) / 2);
+	if (stack->to_push == 0)
+		stack->to_push = 1;
+
+statistics of R=100 N=5000
+
+Statistics of 100 numbers:
+   Max = 688
+   avg = 600
+   Min = 534
+   Final grade = 5
+
+##########################
+
+var to_push:
+   stack->to_push = ((size - 5) / 3);
+	if (stack->to_push == 0)
+		stack->to_push = 1;
+
+statistics of R=100 N=15000
+
+Statistics of 100 numbers:
+   Max = 690
+   avg = 629
+   Min = 575
+   Final grade = 5
+
+###########################
+
+var to_push:
+   stack->to_push = ((size - 5) / 2);
+	if (stack->to_push == 0)
+		stack->to_push = 1;
+
+statistics of R=100 N=15000
+
+Statistics of 100 numbers:
+   Max = 697
+   avg = 600
+   Min = 518
+   Final grade = 5
+
+###########################
+
+vat to_push:
+      stack->to_push = ((size - 5) / 3) + 1;
+
+statistics of R=100 N=20000
+
+Statistics of 100 numbers:
+   Max = 678
+   avg = 619
+   Min = 566
+   Final grade = 5
+
+############################
+
+var to_push:
+   stack->to_push = ((size - 5) / 5) + 1;
+
+statistics of R=500 N=1000
+
+Statistics of 500 numbers:
+   Max = 5418
+   avg = 5127
+   Min = 4856
+   Final grade = 5
